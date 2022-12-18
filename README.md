@@ -17,6 +17,7 @@ npm install -g .
 ```
 
 ## Usage
+Place your CSV file in Portfolio-tracker folder and rename it as transactions.csv.
 
 You can query your portfolio value as:
 - Given no parameters, return the latest portfolio value per token in USD
