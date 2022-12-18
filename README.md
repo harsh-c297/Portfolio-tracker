@@ -59,4 +59,4 @@ This script uses following libraries:
 Exchange rates for tokens are fetched from **cryptocompare**.
 
 This script takes user inputs as command line arguments and based on those arguments returns the portfolio value. 
-Papaparse parses the CSV file in chunks which is faster then reading the file line by line. While parsing, based on passed arguments, token balance is calculated. After parsing token values are fetched from **cryptocompare** and portfolio value is calculated.
+Papaparse parses the CSV file in chunks which is faster than reading the file line by line. While parsing, based on passed arguments, token balance is calculated. After parsing token values are fetched from **cryptocompare** and portfolio value is calculated.
