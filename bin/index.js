@@ -9,7 +9,6 @@ const path = require('path')
 const { exit } = require("process");
 const apikey = "4b0dbb7999bd163d4899067216b93b96194883f18ea187bb7d26d49e85ea589a";
 
-console.time("timer")
 let flag = "";
 let tokenCountList = {};
 const options = yargs
@@ -146,7 +145,6 @@ function getTokenValue(token, balance) {
             console.log(`Current market value for ${token} = USD`, res.data.USD);
             console.log(`Calculating your portfolio value...`);
             console.log(`Portfolio value = USD`, res.data.USD * balance);
-            console.timeEnd("timer");
         });
 };
 
@@ -158,7 +156,6 @@ function getAllTokenValue(tokenCountList) {
             console.log(`Calculating your portfolio value per token...`);
             for (let i = 0; i < tokens.length; i++)
                 console.log(`Portfolio value for ${tokens[i]} = USD`, res.data[tokens[i]].USD * tokenCountList[tokens[i]]);
-            console.timeEnd("timer");
         });
 };
 
@@ -173,7 +170,6 @@ function getAllTokenHistoricalValue(tokenCountList) {
                 console.log(`Portfolio value for ${tokens[i]} on ${options.date} = USD`, res.data[tokens[i]].USD * tokenCountList[tokens[i]]);
             });
     }
-    console.timeEnd("timer");
 };
 
 function getTokenHistoricalValue(token, balance) {
@@ -183,6 +179,5 @@ function getTokenHistoricalValue(token, balance) {
         .then(res => {
             console.log(`Current market value for ${token} in USD on ${options.date} = USD`, res.data[token].USD);
             console.log(`Portfolio value for ${token} on ${options.date} = USD`, res.data[token].USD * balance);
-            console.timeEnd("timer");
         });
 };
