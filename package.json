@@ -1,0 +1,24 @@
+{
+  "name": "propine-assignment",
+  "version": "1.0.0",
+  "description": "Fetches portfolio value for a token",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Harsh Choudhary",
+  "license": "UNLICENSED",
+  "bin": {
+    "portfolio": "./bin/index.js"
+  },
+  "dependencies": {
+    "axios": "^1.2.1",
+    "chalk": "^5.2.0",
+    "csv": "^6.2.5",
+    "fs": "0.0.1-security",
+    "moment": "^2.29.4",
+    "papaparse": "^5.3.2",
+    "path": "^0.12.7",
+    "yargs": "^17.6.2"
+  }
+}
