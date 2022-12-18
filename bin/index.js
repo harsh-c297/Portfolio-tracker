@@ -19,8 +19,8 @@ const options = yargs
 
 if (options.date && options.token) {
     if (moment(options.date, "DD-MM-YYYY").isValid()) {
-        console.log(`Reading the csv file to get ${options.token} balance on ${options.date}...`);
-        tokenCountList[options.token] = 0;
+        console.log(`Reading the csv file to get ${options.token.toUpperCase()} balance on ${options.date}...`);
+        tokenCountList[options.token.toUpperCase()] = 0;
         flag = "both";
     } else {
         console.log("Please provide a valid date in DD-MM-YYYY format");
@@ -35,15 +35,17 @@ if (options.date && options.token) {
         exit();
     }
 } else if (options.token && !options.date) {
-    console.log(`Reading the csv file to get token balance for ${options.token}...`);
-    tokenCountList[options.token] = 0;
+    console.log(`Reading the csv file to get token balance for ${options.token.toUpperCase()}...`);
+    tokenCountList[options.token.toUpperCase()] = 0;
     flag = "one";
 } else if (!options.date && !options.token && options.date != "" && options.token != "") {
     console.log("Reading the csv file to get balance for all tokens");
     tokenCountList = {};
     flag = "all";
-} else exit();
-
+} else {
+    console.log("Please provide values")
+    exit();
+}
 let found = false;
 let count = 0;
 csvParser.parse(fs.createReadStream(path.join(__dirname, "../transactions.csv")), { // add path logic here
@@ -111,8 +113,8 @@ csvParser.parse(fs.createReadStream(path.join(__dirname, "../transactions.csv"))
     complete: () => {
         switch (flag) {
             case "one": {
-                console.log("Token balance =", tokenCountList[options.token]);
-                getTokenValue(options.token, tokenCountList[options.token]);
+                console.log("Token balance =", tokenCountList[options.token.toUpperCase()]);
+                getTokenValue(options.token.toUpperCase(), tokenCountList[options.token.toUpperCase()]);
                 break;
             }
             case "all": {
@@ -126,8 +128,8 @@ csvParser.parse(fs.createReadStream(path.join(__dirname, "../transactions.csv"))
                 break;
             }
             case "both": {
-                console.log("Token balance =", tokenCountList[options.token]);
-                getTokenHistoricalValue(options.token, tokenCountList[options.token]);
+                console.log("Token balance =", tokenCountList[options.token.toUpperCase()]);
+                getTokenHistoricalValue(options.token.toUpperCase(), tokenCountList[options.token.toUpperCase()]);
                 break;
             }
         }
